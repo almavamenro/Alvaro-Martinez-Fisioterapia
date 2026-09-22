@@ -7,15 +7,7 @@
     <title>Álvaro Martínez Fisioterapia | Córdoba</title>
 
     <style>
-        .foto-perfil {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 25px auto;
-    border: 4px solid white;
-}
+
         html {
             scroll-behavior: smooth;
         }
@@ -26,6 +18,8 @@
             color: #333;
             background: #f7f5f2;
         }
+
+        /* NAVEGACIÓN */
 
         nav {
             background: white;
@@ -44,11 +38,29 @@
             font-weight: bold;
         }
 
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* CABECERA */
+
         header {
             background: #6b4f3f;
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 70px 20px;
+        }
+
+        /* FOTO */
+
+        .foto-perfil {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 25px auto;
+            border: 4px solid white;
         }
 
         header h1 {
@@ -61,6 +73,8 @@
             margin: 0;
         }
 
+        /* SECCIONES */
+
         section {
             max-width: 900px;
             margin: auto;
@@ -72,6 +86,8 @@
             font-size: 30px;
             margin-bottom: 25px;
         }
+
+        /* SERVICIOS */
 
         .servicios {
             display: grid;
@@ -90,6 +106,8 @@
             margin-top: 0;
         }
 
+        /* TARIFAS */
+
         .tarifas {
             background: white;
             padding: 25px;
@@ -102,12 +120,22 @@
             margin: 15px 0;
         }
 
+        /* CONTACTO */
+
+        #contacto {
+            padding-bottom: 70px;
+        }
+
+        /* PIE DE PÁGINA */
+
         footer {
             background: #6b4f3f;
             color: white;
             text-align: center;
             padding: 30px 20px;
         }
+
+        /* MÓVIL */
 
         @media (max-width: 600px) {
 
@@ -117,6 +145,15 @@
                 font-size: 14px;
             }
 
+            header {
+                padding: 55px 20px;
+            }
+
+            .foto-perfil {
+                width: 150px;
+                height: 150px;
+            }
+
             header h1 {
                 font-size: 32px;
             }
@@ -124,11 +161,18 @@
             header p {
                 font-size: 18px;
             }
+
+            h2 {
+                font-size: 26px;
+            }
         }
+
     </style>
 </head>
 
 <body>
+
+    <!-- NAVEGACIÓN -->
 
     <nav>
         <a href="#inicio">Inicio</a>
@@ -138,16 +182,30 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
+
+    <!-- INICIO -->
+
     <header id="inicio">
-        <img 
-    src="IMG_20220228_001510_600_Original.jpeg" 
-    alt="Álvaro Martínez Fisioterapia" 
-    class="foto-perfil">
+
+        <img
+            src="IMG_20220228_001510_600_Original.jpeg"
+            alt="Álvaro Martínez Fisioterapia"
+            class="foto-perfil"
+        >
+
         <h1>Álvaro Martínez Fisioterapia</h1>
-        <p>Fisioterapia y readaptación en Córdoba</p>
+
+        <p>
+            Fisioterapia y readaptación en Córdoba
+        </p>
+
     </header>
 
+
+    <!-- SOBRE MÍ -->
+
     <section id="sobre-mi">
+
         <h2>Sobre mí</h2>
 
         <p>
@@ -155,41 +213,62 @@
             a recuperar tu movilidad, mejorar tu función y volver a tus
             actividades habituales.
         </p>
+
     </section>
 
+
+    <!-- SERVICIOS -->
+
     <section id="servicios">
+
         <h2>Servicios</h2>
 
         <div class="servicios">
 
             <div class="servicio">
+
                 <h3>Terapia manual</h3>
+
                 <p>
                     Tratamiento individualizado orientado a mejorar
                     el movimiento y reducir las molestias.
                 </p>
+
             </div>
 
+
             <div class="servicio">
+
                 <h3>Readaptación funcional</h3>
+
                 <p>
                     Ejercicio terapéutico y progresión funcional
                     adaptados a cada persona.
                 </p>
+
             </div>
 
+
             <div class="servicio">
+
                 <h3>Electroterapia</h3>
+
                 <p>
                     Aplicación de técnicas de electroterapia cuando
                     están indicadas dentro del tratamiento.
                 </p>
+
             </div>
 
         </div>
+
     </section>
 
+
+    <!-- TARIFAS -->
+
     <section id="tarifas">
+
         <h2>Tarifas</h2>
 
         <div class="tarifas">
@@ -205,9 +284,14 @@
             </p>
 
         </div>
+
     </section>
 
+
+    <!-- CONTACTO -->
+
     <section id="contacto">
+
         <h2>Contacto</h2>
 
         <p>
@@ -218,10 +302,18 @@
             Si quieres solicitar información sobre una sesión,
             puedes ponerte en contacto conmigo.
         </p>
+
     </section>
 
+
+    <!-- PIE DE PÁGINA -->
+
     <footer>
-        <p>© Álvaro Martínez Fisioterapia</p>
+
+        <p>
+            © Álvaro Martínez Fisioterapia
+        </p>
+
     </footer>
 
 </body>
