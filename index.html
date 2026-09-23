@@ -102,7 +102,7 @@
         h2 {
             color: #6b4f3f;
             font-size: 30px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         section p {
@@ -113,19 +113,39 @@
 
         .servicios {
             display: grid;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
         .servicio {
             background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .servicio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .icono-servicio {
+            font-size: 42px;
+            margin-bottom: 15px;
         }
 
         .servicio h3 {
             color: #6b4f3f;
-            margin-top: 0;
+            margin: 10px 0 15px 0;
+            font-size: 21px;
+        }
+
+        .servicio p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         /* TARIFAS */
@@ -159,7 +179,7 @@
 
         /* MÓVIL */
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
             nav a {
                 display: inline-block;
@@ -186,6 +206,10 @@
 
             h2 {
                 font-size: 26px;
+            }
+
+            .servicios {
+                grid-template-columns: 1fr;
             }
 
         }
@@ -276,23 +300,28 @@
 
             <div class="servicio">
 
+                <div class="icono-servicio">👐</div>
+
                 <h3>Terapia manual</h3>
 
                 <p>
-                    Tratamiento individualizado orientado a mejorar
-                    el movimiento y reducir las molestias.
+                    Técnicas manuales adaptadas a las necesidades
+                    de cada persona para mejorar el movimiento
+                    y ayudar a reducir las molestias.
                 </p>
 
             </div>
 
 
             <div class="servicio">
+
+                <div class="icono-servicio">🏃</div>
 
                 <h3>Readaptación funcional</h3>
 
                 <p>
                     Ejercicio terapéutico y progresión funcional
-                    adaptados a cada persona.
+                    adaptados a tus objetivos y a tu situación.
                 </p>
 
             </div>
@@ -300,11 +329,13 @@
 
             <div class="servicio">
 
+                <div class="icono-servicio">⚡</div>
+
                 <h3>Electroterapia</h3>
 
                 <p>
-                    Aplicación de técnicas de electroterapia cuando
-                    están indicadas dentro del tratamiento.
+                    Aplicación de agentes físicos cuando están
+                    indicados como parte del tratamiento.
                 </p>
 
             </div>
