@@ -73,7 +73,7 @@
             margin: 10px 0;
         }
 
-        /* BOTÓN CONTACTO */
+        /* BOTONES */
 
         .boton-contacto {
             display: inline-block;
@@ -85,6 +85,9 @@
             font-weight: bold;
             border-radius: 30px;
             transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
 
         .boton-contacto:hover {
@@ -150,41 +153,47 @@
 
         /* TARIFAS */
 
-      <section id="tarifas">
-    <h2>Tarifas</h2>
+        .tarifas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
 
-    <div class="tarifas">
+        .tarifa {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-        <div class="tarifa">
-            <div class="icono-tarifa">🏠</div>
-            <h3>Sesión en mi domicilio</h3>
-            <p class="precio">25 €</p>
-            <p>Sesión de fisioterapia de 45–60 minutos.</p>
+        .tarifa:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
 
-            <a
-                href="https://wa.me/34691180034?text=Hola%20%C3%81lvaro%2C%20he%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20una%20sesi%C3%B3n%20de%20fisioterapia."
-                class="boton-contacto"
-            >
-                Solicitar cita
-            </a>
-        </div>
+        .icono-tarifa {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
 
-        <div class="tarifa">
-            <div class="icono-tarifa">🚗</div>
-            <h3>Sesión a domicilio del paciente</h3>
-            <p class="precio">30 €</p>
-            <p>Sesión de fisioterapia de 45–60 minutos.</p>
+        .tarifa h3 {
+            color: #6b4f3f;
+            margin-bottom: 10px;
+        }
 
-            <a
-                href="https://wa.me/34691180034?text=Hola%20%C3%81lvaro%2C%20he%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20una%20sesi%C3%B3n%20de%20fisioterapia."
-                class="boton-contacto"
-            >
-                Solicitar cita
-            </a>
-        </div>
+        .tarifa .precio {
+            font-size: 32px;
+            font-weight: bold;
+            color: #6b4f3f;
+            margin: 10px 0;
+        }
 
-    </div>
-</section>
+        .tarifa p:not(.precio) {
+            margin-bottom: 20px;
+        }
+
         /* CONTACTO */
 
         #contacto {
@@ -198,6 +207,182 @@
             color: white;
             text-align: center;
             padding: 30px 20px;
+        }
+
+        /* MODAL RESERVA */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            overflow-y: auto;
+        }
+
+        .modal-contenido {
+            background: #f7f5f2;
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 20px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 30px;
+            color: #6b4f3f;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modal h2 {
+            margin-top: 0;
+            margin-right: 30px;
+        }
+
+        .paso {
+            margin-bottom: 25px;
+        }
+
+        .paso-titulo {
+            font-weight: bold;
+            color: #6b4f3f;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        /* SERVICIOS DEL MODAL */
+
+        .opciones-servicio {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .opcion-servicio {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .opcion-servicio:hover {
+            border-color: #6b4f3f;
+        }
+
+        .opcion-servicio.seleccionado {
+            border-color: #6b4f3f;
+            background: #eee7e1;
+        }
+
+        .opcion-servicio .icono {
+            font-size: 32px;
+        }
+
+        .opcion-servicio h3 {
+            color: #6b4f3f;
+            margin: 10px 0;
+        }
+
+        .opcion-servicio .precio-modal {
+            font-size: 22px;
+            font-weight: bold;
+            color: #6b4f3f;
+        }
+
+        /* FECHA */
+
+        .fecha {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
+        }
+
+        /* HORARIOS */
+
+        .horarios {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .hora {
+            padding: 12px 8px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            color: #6b4f3f;
+        }
+
+        .hora:hover {
+            border-color: #6b4f3f;
+        }
+
+        .hora.seleccionada {
+            background: #6b4f3f;
+            color: white;
+        }
+
+        .hora.oculta {
+            display: none;
+        }
+
+        /* RESUMEN */
+
+        .resumen {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            margin-top: 20px;
+            line-height: 1.7;
+        }
+
+        .resumen strong {
+            color: #6b4f3f;
+        }
+
+        .boton-whatsapp-reserva {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 20px;
+            padding: 15px;
+            background: #6b4f3f;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .boton-whatsapp-reserva:hover {
+            opacity: 0.9;
+        }
+
+        .aviso {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
         }
 
         /* MÓVIL */
@@ -233,6 +418,23 @@
 
             .servicios {
                 grid-template-columns: 1fr;
+            }
+
+            .tarifas {
+                grid-template-columns: 1fr;
+            }
+
+            .opciones-servicio {
+                grid-template-columns: 1fr;
+            }
+
+            .horarios {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-contenido {
+                margin: 20px auto;
+                padding: 25px 20px;
             }
 
         }
@@ -274,12 +476,12 @@
             a recuperar movimiento y función.
         </p>
 
-        <a
-            href="https://wa.me/34691180034?text=Hola%20%C3%81lvaro%2C%20he%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20una%20sesi%C3%B3n%20de%20fisioterapia."
+        <button
             class="boton-contacto"
+            onclick="abrirReserva()"
         >
-            Solicitar información
-        </a>
+            Reservar cita
+        </button>
 
     </header>
 
@@ -376,15 +578,48 @@
 
         <div class="tarifas">
 
-            <p class="precio">
-                Sesión en domicilio:
-                <strong>25 €</strong>
-            </p>
+            <div class="tarifa">
 
-            <p class="precio">
-                Sesión a domicilio del paciente:
-                <strong>30 €</strong>
-            </p>
+                <div class="icono-tarifa">🏠</div>
+
+                <h3>Sesión en mi domicilio</h3>
+
+                <p class="precio">25 €</p>
+
+                <p>
+                    Sesión de fisioterapia de 45–60 minutos.
+                </p>
+
+                <button
+                    class="boton-contacto"
+                    onclick="abrirReserva('domicilio')"
+                >
+                    Reservar cita
+                </button>
+
+            </div>
+
+
+            <div class="tarifa">
+
+                <div class="icono-tarifa">🚗</div>
+
+                <h3>Sesión a domicilio del paciente</h3>
+
+                <p class="precio">30 €</p>
+
+                <p>
+                    Sesión de fisioterapia de 45–60 minutos.
+                </p>
+
+                <button
+                    class="boton-contacto"
+                    onclick="abrirReserva('paciente')"
+                >
+                    Reservar cita
+                </button>
+
+            </div>
 
         </div>
 
@@ -403,11 +638,538 @@
 
         <p>
             Si quieres solicitar información sobre una sesión,
-            puedes ponerte en contacto conmigo.
+            puedes reservar tu cita o ponerte en contacto conmigo.
         </p>
+
+        <button
+            class="boton-contacto"
+            style="background:#6b4f3f; color:white;"
+            onclick="abrirReserva()"
+        >
+            Reservar cita
+        </button>
+
+        <br>
 
         <a
             href="https://wa.me/34691180034?text=Hola%20%C3%81lvaro%2C%20he%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20una%20sesi%C3%B3n%20de%20fisioterapia."
+            class="boton-contacto"
+            style="background:#6b4f3f; color:white;"
+        >
+            Contactar por WhatsApp
+        </a>
+
+    </section>
+
+
+    <!-- MODAL DE RESERVA -->
+
+    <div id="modalReserva" class="modal">
+
+        <div class="modal-contenido">
+
+            <span
+                class="cerrar-modal"
+                onclick="cerrarReserva()"
+            >
+                &times;
+            </span>
+
+            <h2>Reservar cita</h2>
+
+
+            <!-- PASO 1 -->
+
+            <div class="paso">
+
+                <div class="paso-titulo">
+                    1. Elige el servicio
+                </div>
+
+                <div class="opciones-servicio">
+
+                    <div
+                        class="opcion-servicio"
+                        id="servicioDomicilio"
+                        onclick="seleccionarServicio('domicilio')"
+                    >
+
+                        <div class="icono">🏠</div>
+
+                        <h3>Sesión en mi domicilio</h3>
+
+                        <div class="precio-modal">
+                            25 €
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="opcion-servicio"
+                        id="servicioPaciente"
+                        onclick="seleccionarServicio('paciente')"
+                    >
+
+                        <div class="icono">🚗</div>
+
+                        <h3>Sesión a domicilio del paciente</h3>
+
+                        <div class="precio-modal">
+                            30 €
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PASO 2 -->
+
+            <div class="paso">
+
+                <div class="paso-titulo">
+                    2. Elige el día
+                </div>
+
+                <input
+                    type="date"
+                    id="fechaReserva"
+                    class="fecha"
+                    onchange="actualizarHorarios()"
+                >
+
+                <p class="aviso">
+                    Las horas disponibles dependen del día de la semana.
+                </p>
+
+            </div>
+
+
+            <!-- PASO 3 -->
+
+            <div class="paso">
+
+                <div class="paso-titulo">
+                    3. Elige la hora
+                </div>
+
+                <div
+                    id="horarios"
+                    class="horarios"
+                >
+                    <p>
+                        Selecciona primero un día.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- RESUMEN -->
+
+            <div
+                id="resumen"
+                class="resumen"
+                style="display:none;"
+            >
+
+                <strong>Resumen de la reserva</strong>
+
+                <div id="resumenTexto"></div>
+
+                <a
+                    id="whatsappReserva"
+                    class="boton-whatsapp-reserva"
+                    href="#"
+                    target="_blank"
+                >
+                    Solicitar cita por WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <p>
+            © Álvaro Martínez Fisioterapia
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let servicioSeleccionado = "";
+        let fechaSeleccionada = "";
+        let horaSeleccionada = "";
+
+        const whatsapp = "34691180034";
+
+
+        /* ABRIR RESERVA */
+
+        function abrirReserva(servicio = "") {
+
+            document.getElementById("modalReserva").style.display = "block";
+
+            document.body.style.overflow = "hidden";
+
+            servicioSeleccionado = "";
+            fechaSeleccionada = "";
+            horaSeleccionada = "";
+
+            document.getElementById("resumen").style.display = "none";
+
+            document.getElementById("fechaReserva").value = "";
+
+            document.getElementById("horarios").innerHTML =
+                "<p>Selecciona primero un día.</p>";
+
+            document.getElementById("servicioDomicilio")
+                .classList.remove("seleccionado");
+
+            document.getElementById("servicioPaciente")
+                .classList.remove("seleccionado");
+
+            if (servicio) {
+                seleccionarServicio(servicio);
+            }
+
+        }
+
+
+        /* CERRAR RESERVA */
+
+        function cerrarReserva() {
+
+            document.getElementById("modalReserva").style.display = "none";
+
+            document.body.style.overflow = "auto";
+
+        }
+
+
+        /* CERRAR AL PULSAR FUERA */
+
+        window.onclick = function(event) {
+
+            const modal = document.getElementById("modalReserva");
+
+            if (event.target === modal) {
+                cerrarReserva();
+            }
+
+        };
+
+
+        /* SELECCIONAR SERVICIO */
+
+        function seleccionarServicio(servicio) {
+
+            servicioSeleccionado = servicio;
+
+            document.getElementById("servicioDomicilio")
+                .classList.remove("seleccionado");
+
+            document.getElementById("servicioPaciente")
+                .classList.remove("seleccionado");
+
+
+            if (servicio === "domicilio") {
+
+                document.getElementById("servicioDomicilio")
+                    .classList.add("seleccionado");
+
+            }
+
+            if (servicio === "paciente") {
+
+                document.getElementById("servicioPaciente")
+                    .classList.add("seleccionado");
+
+            }
+
+            actualizarResumen();
+
+        }
+
+
+        /* FECHA MÍNIMA: HOY */
+
+        const hoy = new Date();
+
+        const año = hoy.getFullYear();
+
+        const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+
+        const dia = String(hoy.getDate()).padStart(2, "0");
+
+        const fechaHoy =
+            año + "-" + mes + "-" + dia;
+
+        document.getElementById("fechaReserva")
+            .setAttribute("min", fechaHoy);
+
+
+        /* ACTUALIZAR HORARIOS */
+
+        function actualizarHorarios() {
+
+            const fecha =
+                document.getElementById("fechaReserva").value;
+
+            if (!fecha) {
+                return;
+            }
+
+            fechaSeleccionada = fecha;
+
+            horaSeleccionada = "";
+
+            const fechaObjeto =
+                new Date(fecha + "T12:00:00");
+
+            const diaSemana =
+                fechaObjeto.getDay();
+
+            let horas = [];
+
+
+            /*
+                0 = domingo
+                1 = lunes
+                2 = martes
+                3 = miércoles
+                4 = jueves
+                5 = viernes
+                6 = sábado
+            */
+
+
+            if (
+                diaSemana === 1 ||
+                diaSemana === 2 ||
+                diaSemana === 3 ||
+                diaSemana === 4
+            ) {
+
+                horas = ["12:30"];
+
+            }
+
+            else if (diaSemana === 5) {
+
+                horas = [
+                    "16:00",
+                    "17:00",
+                    "18:00",
+                    "19:00",
+                    "20:00"
+                ];
+
+            }
+
+            else {
+
+                horas = [
+                    "10:00",
+                    "11:00",
+                    "12:00",
+                    "13:00",
+                    "16:00",
+                    "17:00",
+                    "18:00",
+                    "19:00",
+                    "20:00"
+                ];
+
+            }
+
+
+            const contenedor =
+                document.getElementById("horarios");
+
+            contenedor.innerHTML = "";
+
+
+            horas.forEach(function(hora) {
+
+                const boton =
+                    document.createElement("button");
+
+                boton.type = "button";
+
+                boton.className = "hora";
+
+                boton.textContent = hora;
+
+                boton.onclick = function() {
+
+                    seleccionarHora(hora, boton);
+
+                };
+
+                contenedor.appendChild(boton);
+
+            });
+
+
+            actualizarResumen();
+
+        }
+
+
+        /* SELECCIONAR HORA */
+
+        function seleccionarHora(hora, boton) {
+
+            horaSeleccionada = hora;
+
+            document.querySelectorAll(".hora")
+                .forEach(function(elemento) {
+
+                    elemento.classList.remove("seleccionada");
+
+                });
+
+            boton.classList.add("seleccionada");
+
+            actualizarResumen();
+
+        }
+
+
+        /* FORMATEAR FECHA */
+
+        function formatearFecha(fecha) {
+
+            const partes = fecha.split("-");
+
+            return partes[2] + "/" +
+                   partes[1] + "/" +
+                   partes[0];
+
+        }
+
+
+        /* ACTUALIZAR RESUMEN */
+
+        function actualizarResumen() {
+
+            const resumen =
+                document.getElementById("resumen");
+
+            const texto =
+                document.getElementById("resumenTexto");
+
+            if (
+                !servicioSeleccionado ||
+                !fechaSeleccionada ||
+                !horaSeleccionada
+            ) {
+
+                resumen.style.display = "none";
+
+                return;
+
+            }
+
+
+            let nombreServicio = "";
+            let precio = "";
+
+
+            if (servicioSeleccionado === "domicilio") {
+
+                nombreServicio =
+                    "Sesión en mi domicilio";
+
+                precio = "25 €";
+
+            }
+
+            else if (servicioSeleccionado === "paciente") {
+
+                nombreServicio =
+                    "Sesión a domicilio del paciente";
+
+                precio = "30 €";
+
+            }
+
+
+            const fechaFormateada =
+                formatearFecha(fechaSeleccionada);
+
+
+            texto.innerHTML =
+                "<strong>Servicio:</strong> " +
+                nombreServicio +
+                "<br>" +
+
+                "<strong>Precio:</strong> " +
+                precio +
+                "<br>" +
+
+                "<strong>Día:</strong> " +
+                fechaFormateada +
+                "<br>" +
+
+                "<strong>Hora:</strong> " +
+                horaSeleccionada;
+
+
+            const mensaje =
+                "Hola Álvaro, he visto tu web y me gustaría solicitar una cita." +
+                "\n\n" +
+
+                "Servicio: " +
+                nombreServicio +
+                "\n" +
+
+                "Precio: " +
+                precio +
+                "\n" +
+
+                "Día: " +
+                fechaFormateada +
+                "\n" +
+
+                "Hora: " +
+                horaSeleccionada;
+
+
+            const enlace =
+                "https://wa.me/" +
+                whatsapp +
+                "?text=" +
+                encodeURIComponent(mensaje);
+
+
+            document.getElementById("whatsappReserva")
+                .href = enlace;
+
+
+            resumen.style.display = "block";
+
+        }
+
+    </script>
+
+</body>
+</html>
             class="boton-contacto"
             style="background:#6b4f3f; color:white;"
         >
