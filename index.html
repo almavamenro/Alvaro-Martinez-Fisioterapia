@@ -412,6 +412,7 @@
                 margin: 20px auto;
                 padding: 25px 20px;
             }
+
         }
 
     </style>
@@ -888,7 +889,7 @@
            HORARIOS
         ============================== */
 
-        function actualizarHorarios() {
+        async function actualizarHorarios() {
 
             const fecha =
                 document.getElementById("fechaReserva").value;
@@ -953,32 +954,131 @@
             const contenedor =
                 document.getElementById("horarios");
 
-            contenedor.innerHTML = "";
+            contenedor.innerHTML =
+                "<p>Comprobando disponibilidad...</p>";
 
 
-            horas.forEach(function(hora) {
+            /* ==============================
+               COMPROBAR HORAS OCUPADAS
+            ============================== */
 
-                const boton =
-                    document.createElement("button");
+            try {
 
-                boton.type = "button";
+                const respuesta =
+                    await fetch(
+                        SUPABASE_URL +
+                        "/rest/v1/horarios_ocupados" +
+                        "?date=eq." +
+                        encodeURIComponent(fecha) +
+                        "&select=time",
+                        {
+                            method: "GET",
 
-                boton.className = "hora";
+                            headers: {
+                                "apikey": SUPABASE_KEY,
 
-                boton.textContent = hora;
-
-                boton.onclick = function() {
-
-                    seleccionarHora(hora, boton);
-
-                };
-
-                contenedor.appendChild(boton);
-
-            });
+                                "Authorization":
+                                    "Bearer " +
+                                    SUPABASE_KEY
+                            }
+                        }
+                    );
 
 
-            actualizarResumen();
+                if (!respuesta.ok) {
+
+                    const error =
+                        await respuesta.text();
+
+                    console.error(
+                        "Error consultando disponibilidad:",
+                        error
+                    );
+
+                    throw new Error(
+                        "No se pudo consultar la disponibilidad."
+                    );
+
+                }
+
+
+                const reservasOcupadas =
+                    await respuesta.json();
+
+
+                const horasOcupadas =
+                    reservasOcupadas.map(function(reserva) {
+
+                        return reserva.time;
+
+                    });
+
+
+                /* ==============================
+                   FILTRAR HORAS ACEPTADAS
+                ============================== */
+
+                const horasDisponibles =
+                    horas.filter(function(hora) {
+
+                        return !horasOcupadas.includes(hora);
+
+                    });
+
+
+                contenedor.innerHTML = "";
+
+
+                if (horasDisponibles.length === 0) {
+
+                    contenedor.innerHTML =
+                        "<p>No hay horas disponibles para este día.</p>";
+
+                    actualizarResumen();
+
+                    return;
+
+                }
+
+
+                horasDisponibles.forEach(function(hora) {
+
+                    const boton =
+                        document.createElement("button");
+
+                    boton.type = "button";
+
+                    boton.className = "hora";
+
+                    boton.textContent = hora;
+
+                    boton.onclick = function() {
+
+                        seleccionarHora(hora, boton);
+
+                    };
+
+                    contenedor.appendChild(boton);
+
+                });
+
+
+                actualizarResumen();
+
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                contenedor.innerHTML =
+                    "<p>No se ha podido comprobar la disponibilidad. " +
+                    "Inténtalo de nuevo.</p>";
+
+                actualizarResumen();
+
+            }
 
         }
 
