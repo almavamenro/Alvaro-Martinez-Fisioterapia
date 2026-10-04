@@ -985,19 +985,30 @@
                     );
 
 
+                /* ==============================
+                   MOSTRAR ERROR REAL DE SUPABASE
+                ============================== */
+
                 if (!respuesta.ok) {
 
                     const error =
                         await respuesta.text();
 
                     console.error(
-                        "Error consultando disponibilidad:",
+                        "ERROR SUPABASE:",
+                        respuesta.status,
                         error
                     );
 
-                    throw new Error(
-                        "No se pudo consultar la disponibilidad."
-                    );
+                    contenedor.innerHTML =
+                        "<p style='color:#b00020;'>" +
+                        "Error de Supabase (" +
+                        respuesta.status +
+                        "): " +
+                        error +
+                        "</p>";
+
+                    return;
 
                 }
 
