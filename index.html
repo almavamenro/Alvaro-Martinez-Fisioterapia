@@ -752,7 +752,7 @@
             "https://lrmsmwzjncdjmywkskeo.supabase.co";
 
         const SUPABASE_KEY =
-            "sb_publishable_ti-WxtyhMmZmoG1bGSElgg__53n8jgX";
+            "sb_publishable_ti-WxtyhMmZmo1GbGSElgg__53n8jgX";
 
 
         /* ==============================
@@ -1006,12 +1006,29 @@
                     await respuesta.json();
 
 
+                /* ==============================
+                   NORMALIZAR HORAS OCUPADAS
+                ============================== */
+
                 const horasOcupadas =
                     reservasOcupadas.map(function(reserva) {
 
-                        return reserva.time;
+                        return String(reserva.time)
+                            .trim()
+                            .substring(0, 5);
 
                     });
+
+
+                console.log(
+                    "Fecha consultada:",
+                    fecha
+                );
+
+                console.log(
+                    "Horas ocupadas:",
+                    horasOcupadas
+                );
 
 
                 /* ==============================
