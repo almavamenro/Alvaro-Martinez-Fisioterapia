@@ -752,7 +752,7 @@
             "https://lrmsmwzjncdjmywkskeo.supabase.co";
 
         const SUPABASE_KEY =
-            "sb_publishable_ti-WxtyhMmZmo1GbGSElgg__53n8jgX";
+            "sb_publishable_ti-WxtyhMmZmoG1bGSElgg__53n8jgX";
 
 
         /* ==============================
@@ -958,10 +958,6 @@
                 "<p>Comprobando disponibilidad...</p>";
 
 
-            /* ==============================
-               COMPROBAR HORAS OCUPADAS
-            ============================== */
-
             try {
 
                 const respuesta =
@@ -984,10 +980,6 @@
                         }
                     );
 
-
-                /* ==============================
-                   MOSTRAR ERROR REAL DE SUPABASE
-                ============================== */
 
                 if (!respuesta.ok) {
 
@@ -1017,10 +1009,6 @@
                     await respuesta.json();
 
 
-                /* ==============================
-                   NORMALIZAR HORAS OCUPADAS
-                ============================== */
-
                 const horasOcupadas =
                     reservasOcupadas.map(function(reserva) {
 
@@ -1041,10 +1029,6 @@
                     horasOcupadas
                 );
 
-
-                /* ==============================
-                   FILTRAR HORAS ACEPTADAS
-                ============================== */
 
                 const horasDisponibles =
                     horas.filter(function(hora) {
